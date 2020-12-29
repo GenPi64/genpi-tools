@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64"
 RDEPEND="
 	acct-group/disk
 	x11-libs/libX11
+	app-arch/zstd
 "
 DEPEND="${RDEPEND}
 "
