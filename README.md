@@ -72,16 +72,16 @@ Next, create a custom `/etc/portage/repos.conf` entry for the **sakaki-tools** o
 
 and put the following text in the file:
 ```
-[sakaki-tools]
+[genpi-tools]
  
 # Various utility ebuilds for Gentoo on EFI
-# Maintainer: sakaki (sakaki@deciban.com)
+# former  Maintainer: sakaki (sakaki@deciban.com) / now https://github.com/GenPi64/genpi-tool
  
-location = /usr/local/portage/sakaki-tools
+location = /var/db/repos/genpi-tools
 sync-type = git
-sync-uri = https://github.com/sakaki-/sakaki-tools.git
+sync-uri = https://github.com/GenPi64/genpi-tools.git
 priority = 50
-auto-sync = yes
+auto-sync = yess
 ```
 
 Then run:
