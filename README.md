@@ -86,7 +86,7 @@ auto-sync = yess
 
 Then run:
 
-    # emaint sync --repo sakaki-tools
+    # emaint sync --repo genpi-tools
 
 If you are running on the stable branch by default, allow **~amd64** keyword files from this repository. Make sure that `/etc/portage/package.accept_keywords` exists, and is a directory. Then issue:
 
