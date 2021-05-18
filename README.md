@@ -81,7 +81,7 @@ location = /var/db/repos/genpi-tools
 sync-type = git
 sync-uri = https://github.com/GenPi64/genpi-tools.git
 priority = 50
-auto-sync = yess
+auto-sync = yes
 ```
 
 Then run:
