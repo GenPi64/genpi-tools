@@ -1,4 +1,4 @@
-# sakaki-tools Gentoo Overlay
+# Genpi-tools Gentoo Overlay, formerly sakaki-tools
 
 Overlay containing various utility ebuilds for Gentoo on EFI.
 
@@ -59,23 +59,23 @@ Required for the tutorial ["**Sakaki's EFI Install Guide**"](https://wiki.gentoo
 
 ## Installation
 
-As of version >= 2.2.16 of Portage, **sakaki-tools** is best installed (on Gentoo) via the [new plug-in sync system](https://wiki.gentoo.org/wiki/Project:Portage/Sync).
+As of version >= 2.2.16 of Portage, **genpi-tools** is best installed (on Gentoo) via the [new plug-in sync system](https://wiki.gentoo.org/wiki/Project:Portage/Sync).
 Full instructions are provided on the [Gentoo wiki](https://wiki.gentoo.org/wiki/Sakaki's_EFI_Install_Guide/Building_the_Gentoo_Base_System_Minus_Kernel#Preparing_to_Run_Parallel_emerges).
 
 The following are short form instructions. If you haven't already installed **git**(1), do so first:
 
     # emerge --ask --verbose dev-vcs/git 
 
-Next, create a custom `/etc/portage/repos.conf` entry for the **sakaki-tools** overlay, so Portage knows what to do. Make sure that `/etc/portage/repos.conf` exists, and is a directory. Then, fire up your favourite editor:
+Next, create a custom `/etc/portage/repos.conf` entry for the **genpi-tools** overlay, so Portage knows what to do. Make sure that `/etc/portage/repos.conf` exists, and is a directory. Then, fire up your favourite editor:
 
-    # nano -w /etc/portage/repos.conf/sakaki-tools.conf
+    # nano -w /etc/portage/repos.conf/genpi-tools.conf
 
 and put the following text in the file:
 ```
 [genpi-tools]
  
 # Various utility ebuilds for Gentoo on EFI
-# former  Maintainer: sakaki (sakaki@deciban.com) / now https://github.com/GenPi64/genpi-tool
+# former  Maintainer: sakaki (sakaki@deciban.com) / now https://github.com/GenPi64/genpi-tools
  
 location = /var/db/repos/genpi-tools
 sync-type = git
@@ -90,12 +90,11 @@ Then run:
 
 If you are running on the stable branch by default, allow **~amd64** keyword files from this repository. Make sure that `/etc/portage/package.accept_keywords` exists, and is a directory. Then issue:
 
-    # echo "*/*::genpi-tools ~amd64" >> /etc/portage/package.accept_keywords/genpi-toolss-repo
+    # echo "*/*::genpi-tools ~amd64" >> /etc/portage/package.accept_keywords/genpi-tools-repo
     
 Now you can install packages from the overlay. For example:
 
     # emerge --ask --verbose app-portage/genup
 
 ## Maintainers
-
-* [sakaki](mailto:sakaki@deciban.com)
+*genpi Team
