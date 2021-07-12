@@ -20,7 +20,7 @@ DEPEND="
 	>=net-dns/bind-tools-9.14.8
 	>=net-im/prosody-0.11.3
 	>=net-misc/sipcalc-1.1.6
-	>=dev-python/xkcdpass-1.17.3
+	>=app-admin/xkcdpass-1.17.3
 	>=app-admin/apache-tools-2.4.41
 "
 RDEPEND="
