@@ -14,7 +14,7 @@ SRC_URI="${BASE_SERVER_URI}/${PN}/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64"
+KEYWORDS="amd64 arm arm64"
 IUSE="+buildkernel emtee"
 
 RESTRICT="mirror"
