@@ -1,32 +1,33 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
 
-EAPI=5
+EAPI=7
 
 inherit eutils
 
 DESCRIPTION="Update Portage tree, all installed packages, and kernel"
-BASE_SERVER_URI="https://github.com/sakaki-"
+BASE_SERVER_URI="https://github.com/GenPi64"
 HOMEPAGE="${BASE_SERVER_URI}/${PN}"
-SRC_URI="${BASE_SERVER_URI}/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="${BASE_SERVER_URI}/${PN}/archive/${PV}/${P}.tar.gz"
+
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
-IUSE="+buildkernel emtee nocache"
+KEYWORDS="amd64 arm arm64"
+IUSE="+buildkernel emtee"
 
 RESTRICT="mirror"
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	nocache? ( >=sys-fs/nocache-1.1 )
-	emtee? ( >=app-portage/emtee-1.0.2 )
-	>=sys-libs/ncurses-5.9-r2
-	>=app-portage/eix-0.29.3
+	emtee? ( >=app-portage/emtee-1.0.5 )
+	>=sys-libs/ncurses-6.2-r1
+	>=app-portage/eix-0.35.2
 	>=app-admin/perl-cleaner-2.7
 	>=app-portage/gentoolkit-0.3.0.8-r2
 	amd64? ( buildkernel? ( >=sys-kernel/buildkernel-1.0.13 ) )
-	>=app-shells/bash-4.2"
+	>=app-shells/bash-5.0_p8"
 
 # ebuild function overrides
 src_prepare() {
@@ -35,7 +36,7 @@ src_prepare() {
 		elog "buildkernel USE flag not selected - patching script accordingly."
 		sed -i -e 's@USE_BUILDKERNEL=true@USE_BUILDKERNEL=false@g' "${S}/${PN}" || \
 			die "Failed to patch script to reflect omitted buildkernel USE flag."
-	elif use arm || use ppc; then
+	elif use arm; then
 		ewarn "buildkernel USE flag not supported on this architecture"
 		ewarn "please consider re-emerging with it turned off;"
 		ewarn "you may still use genup, but must manually specify the"
@@ -47,12 +48,7 @@ src_prepare() {
 		sed -i -e 's@USE_EMTEE=false@USE_EMTEE=true@g' "${S}/${PN}" || \
 			die "Failed to patch script to reflect emtee USE flag."
 	fi
-	if use nocache; then
-		elog "nocache USE flag selected - patching script accordingly."
-		sed -i -e 's@USE_NOCACHE=false@USE_NOCACHE=true@g' "${S}/${PN}" || \
-			die "Failed to patch script to reflect nocache USE flag."
-	fi
-	epatch_user
+       eapply_user
 }
 src_install() {
 	dosbin "${PN}"
