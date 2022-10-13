@@ -12,40 +12,10 @@ Required for the tutorial ["**Sakaki's EFI Install Guide**"](https://wiki.gentoo
   * Provides a script (**buildkernel**(8)) to build a (stub EFI) kernel (with integral initramfs) suitable for booting from a USB key on UEFI BIOS PCs. Automatically sets the necessary kernel configuration parameters, including the command line, and signs the resulting kernel if possible (for secure boot). Has a interactive and non-interactive (batch) mode. Manpages for the script and its configuration file (_/etc/buildkernel.conf_) are included.
 * **app-portage/genup** [source](https://github.com/sakaki-/genup)
   * Provides the **genup**(8) script, to simplify the process of keeping your Gentoo system up-to-date. **genup**(8) can automatically update the Portage tree, all installed packages, and kernel. Has interactive and non-interactive (batch) modes. A manpage is included.
-* **app-portage/porthash** [source](https://github.com/sakaki-/porthash)
-  * Provides the **porthash**(1) script, which creates, or by default verifies, a signed `sha512` "master" hash of the specified Portage repostitory tree (by default, `/usr/portage`). It is intended to provide assurance - when distributing a repo snapshot over an unauthenticated channel such as rsync - that the consitutent ebuilds, manifests etc. have not been tampered with in transit. A manpage is included.
-* **app-crypt/staticgpg**
-  * A simple ebuild, derived from **app-crypt/gnupg** version 1.4.16, which creates a statically linked, no-pinentry version of **gpg**(1) suitable for use in an initramfs context. It can safely be installed beside a standard 2.x version of **app-crypt/gnupg** (which isn't SLOTted). Deploys its executable to _/usr/bin/staticgpg_. A placeholder manpage is included.
 * **sys-apps/coreboot-utils** [upstream](https://www.coreboot.org)
   * This package provides a few utilities from the coreboot project, specifically `ifdtool` to parse and modify flash dumps of Intel firmware and (on `amd64` only) `intelmetool` to query the status of the Intel Management Engine.
 * **(eclass/)java-maven-pkg.eclass**
   * Provides an eclass to support building Maven pacakges from source. Use `mvn2ebuild` in place of `mvn` within a working Maven build tree, to create a 'starter' ebuild using this eclass.
-* **app-portage/mvn2ebuild**
-  * Provides a simple utility to create a starter ebuild for a working Maven Java build, leveraging the `java-maven-pkg` eclass.
-* **dev-java/jitsi-sctp** [upstream](https://github.com/mstyura/jitsi-sctp)
-  * Provides a from-source build of the JNI component for the usrsctp library (currently for `~arm64` and `~amd64`). Uses `java-maven-pkg` eclass.
-* **acct-group/jitsi**
-  * Provides a runtime group used by Jitsi services. Currently set at 377.
-* **acct-user/jicofo**
-  * Provides a runtime uid for the JItsi COnference FOcus server. Currently set at 377.
-* **acct-user/jvb**
-  * Provides a runtime uid for the Jitsi Videobridge SFU. Currently set at 376.
-* **net-im/jicofo** [upstream](https://github.com/jitsi/jicofo)
-  * Provides a from-source build of the JItsi Meet COnference FOcus server (media session manager). Uses `java-maven-pkg` eclass.
-* **net-im/jitsi-meet-master-config**
-  * Provides master configuration settings for Jitsi Meet server, via a prompt-based tool.
-* **net-im/jitsi-meet-prosody** [upstream](https://github.com/jitsi/jitsi-meet)
-  * Provides Prosody configuration and plugins for use with Jitsi Meet.
-* **net-im/jitsi-meet-server**
-  * Provides a top-level service for the Jitsi Meet baseline server set, allowing all subcomponents to be started and stopped together. Emerge this package to build the Jitsi complex, then run `emerge --config jitsi-meet-master-config`, and then start the `jitsi-meet-server` service. Supports both OpenRC and systemd.
-* **net-im/jitsi-meet-turnserver** [upstream](https://github.com/jitsi/jitsi-meet)
-  * This package configures the `net-im/coturn` server to work with Jitsi Meet.
-* **net-im/jitsi-meet-web-config** [upstream](https://github.com/jitsi/jitsi-meet)
-  * Provides Webserver (nginx/apache) configurations for use with Jitsi Meet.
-* **net-im/jitsi-meet-web** [upstream](https://github.com/jitsi/jitsi-meet)
-  * Provides an (upstream deb-derived) WebRTC, JavaScript/WASM-based videoconferencing client webroot filestructure.
-* **net-im/jitsi-videobridge** [upstream](https://github.com/jitsi/jitsi-videobridge)
-  * Provides a from-source build of Jitsi VideoBridge - a WebRTC compatible SFU. Uses `java-maven-pkg` eclass.
 
 ## Installation
 
