@@ -8,7 +8,7 @@ inherit eutils
 DESCRIPTION="Build secure boot EFI kernel with LUKS, LVM and plymouth"
 BASE_SERVER_URI="https://github.com/GenPi64"
 HOMEPAGE="${BASE_SERVER_URI}/${PN}"
-SRC_URI="${BASE_SERVER_URI}/${PN}/archive/refs/tags/${PV}.tar.gz"
+SRC_URI="${BASE_SERVER_URI}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
