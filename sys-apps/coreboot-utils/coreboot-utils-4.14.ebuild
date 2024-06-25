@@ -1,8 +1,9 @@
 # Copyright (c) 2017 sakaki <sakaki@deciban.com>
+#           (c) 2021 quarkyalice <quarkyalice@disroot.org>
 # License: GPL v3+
 # NO WARRANTY
 
-EAPI=6
+EAPI=8
 inherit toolchain-funcs
 
 KEYWORDS="~amd64 ~arm ~arm64"
@@ -21,10 +22,15 @@ DEPEND="amd64? ( >=sys-apps/pciutils-3.4.1 )
 	"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-fix-install-path.patch" )
+
 src_compile() {
+	cd "${S}/util/cbfstool"
+	emake clean
+	emake
 	cd "${S}/util/ifdtool"
-	emake V=1 clean
-	emake V=1 CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake clean
+	emake
 	if use amd64; then
 		# intelmetool has a slightly nicer Makefile
 		cd "${S}/util/intelmetool"
@@ -34,10 +40,12 @@ src_compile() {
 }
 
 src_install() {
+	cd "${S}/util/cbfstool"
+	emake DESTDIR="${D}" install
 	cd "${S}/util/ifdtool"
-	emake V=1 DESTDIR="${D%/}" install
+	emake DESTDIR="${D}" install
 	if use amd64; then
 		cd "${S}/util/intelmetool"
-		emake DESTDIR="${D%/}" install
+		emake DESTDIR="${D}" install
 	fi
 }
