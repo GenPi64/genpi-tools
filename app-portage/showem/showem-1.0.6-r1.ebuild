@@ -3,9 +3,7 @@
 # License: GPL v2
 # NO WARRANTY
 
-EAPI=6
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="View output of a parallel emerge from a separate terminal"
 BASE_SERVER_URI="https://github.com/GenPi64"
@@ -24,9 +22,6 @@ RDEPEND="${DEPEND}
 	>=app-shells/bash-4.2"
 
 # ebuild function overrides
-src_prepare() {
-	eapply_user
-}
 src_install() {
 	dobin "${PN}"
 	doman "${PN}.1"
