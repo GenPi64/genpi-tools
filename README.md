@@ -1,8 +1,6 @@
 # Genpi-tools Gentoo Overlay, formerly sakaki-tools
 
-Overlay containing various utility ebuilds for Gentoo on EFI.
-
-Required for the tutorial ["**Sakaki's EFI Install Guide**"](https://wiki.gentoo.org/wiki/Sakaki's_EFI_Install_Guide) on the Gentoo wiki.
+Overlay containing various utility ebuilds for Gentoo.
 
 ## List of ebuilds
 
@@ -10,10 +8,6 @@ Required for the tutorial ["**Sakaki's EFI Install Guide**"](https://wiki.gentoo
   * Provides a simple utility script (**showem**(1)), which enables you to monitor the progress of a parallel **emerge**(1). A manpage is included.
 * **app-portage/genup** [source](https://github.com/sakaki-/genup)
   * Provides the **genup**(8) script, to simplify the process of keeping your Gentoo system up-to-date. **genup**(8) can automatically update the Portage tree, all installed packages, and kernel. Has interactive and non-interactive (batch) modes. A manpage is included.
-* **sys-apps/coreboot-utils** [upstream](https://www.coreboot.org)
-  * This package provides a few utilities from the coreboot project, specifically `ifdtool` to parse and modify flash dumps of Intel firmware and (on `amd64` only) `intelmetool` to query the status of the Intel Management Engine.
-* **(eclass/)java-maven-pkg.eclass**
-  * Provides an eclass to support building Maven pacakges from source. Use `mvn2ebuild` in place of `mvn` within a working Maven build tree, to create a 'starter' ebuild using this eclass.
 
 ## Installation
 
